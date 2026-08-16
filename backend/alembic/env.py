@@ -6,17 +6,23 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 
-# --- FORZAR RUTAS DE IMPORTACIÓN ---
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
-# -----------------------------------
+# --- CONFIGURACIÓN DE RUTA ABSOLUTA PARA EL BACKEND ---
+# Obtenemos la ruta absoluta de la carpeta 'backend' (dos niveles arriba de env.py: alembic/ -> backend/)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+backend_dir = os.path.dirname(current_dir)
 
-# Importar Base y modelos de la aplicación
+# Insertamos la ruta al principio del path de Python
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+# ------------------------------------------------------
+
+# Importar la Base y los modelos de la aplicación
 from app.core.database import Base
 from app.models.station import StationModel
 from app.models.sensor import SensorModel
 from app.models.measurement import MeasurementModel
 
+# El resto de tu archivo env.py continúa exactamente igual...
 config = context.config
 
 if config.config_file_name is not None:

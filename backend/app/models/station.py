@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float
 from geoalchemy2 import Geometry
-from app.core.database import Base
+from ..core.database import Base
 
 class StationModel(Base):
     __tablename__ = "stations"
