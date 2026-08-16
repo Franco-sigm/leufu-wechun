@@ -13,4 +13,4 @@ class MeasurementResponse(MeasurementBase):
     timestamp: datetime
 
     class Config:
-        from_attributes = Truecd back
+        from_attributes = True
