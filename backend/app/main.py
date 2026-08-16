@@ -6,7 +6,6 @@ from app.models.station import StationModel
 from app.models.sensor import SensorModel
 from app.models.measurement import MeasurementModel
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="API Monitoreo de Ríos - La Araucanía",
